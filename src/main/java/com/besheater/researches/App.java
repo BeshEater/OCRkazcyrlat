@@ -12,6 +12,7 @@ public class App {
     private static int partSize = 3400; // characters
     private static File originalTextFile;
     private static File wordTextFile;
+    private static File pdfTextFile;
     private static File originalTextPartsFolder;
     private static File printedTextPartsForRecognitionFolder;
     private static File imagesFolder;
@@ -41,6 +42,7 @@ public class App {
         aggregateTextFilesFolder =
                 originalTextFile.toPath().resolveSibling("aggregate_text_files").toFile();
         wordTextFile = createBlankWordFile(aggregateTextFilesFolder);
+        pdfTextFile = aggregateTextFilesFolder.toPath().resolve("output.pdf").toFile();
         FileUtils.forceMkdir(originalTextPartsFolder);
         FileUtils.forceMkdir(printedTextPartsForRecognitionFolder);
         FileUtils.forceMkdir(imagesFolder);
@@ -66,5 +68,14 @@ public class App {
         System.out.println("Generating word file...");
         WordFileHelper.fillWordFileFromTextParts(wordTextFile, originalTextPartsFolder);
         System.out.println("Word file generation completed");
+    }
+
+    public static void generatePdfFile() throws IOException {
+        // Not working properly some symbols missing
+        /*
+        System.out.println("Generating pdf files...");
+        PdfFileHelper.printPdfFile(wordTextFile, pdfTextFile);
+        System.out.println("PDF files generation completed");
+         */
     }
 }
