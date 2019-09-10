@@ -37,4 +37,10 @@ public class FileHelper {
         String name = file.getName();
         return name.substring(0, name.lastIndexOf("."));
     }
+
+    public static void printFilesName(File[] files) {
+        for (File file : files) {
+            System.out.println(file.getName());
+        }
+    }
 }

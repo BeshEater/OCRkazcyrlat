@@ -1,31 +1,70 @@
 package com.besheater.researches;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 
 public class App {
 
-    private static int partSize = 3500; // characters
-    private static String origTextFilePath = "/home/beinzone/testocr/file_split/abay_cyr_raw.txt";
-    private static String wordFilePath = "/home/beinzone/testocr/test/output.docx";
-    private static String textPartsFolderPath = "/home/beinzone/testocr/file_split/output/";
-    public static String recognTextPartsFolderPath = "/home/beinzone/testocr/test/recogn_parts/Tesseract/";
+    private static int partSize = 3400; // characters
+    private static File originalTextFile;
+    private static File wordTextFile;
+    private static File originalTextPartsFolder;
+    private static File printedTextPartsForRecognitionFolder;
+    private static File imagesFolder;
+    private static File pdfsFolder;
+    private static File recognisedTextPartsFolder;
+    private static File aggregateTextFilesFolder;
 
     public static void main( String[] args ) throws IOException, URISyntaxException {
-        // splitFile();
-        // generateWordFile();
-        RecognitionAccuracyCalculator.printLevenshteinDistances(
-                new File(recognTextPartsFolderPath),
-                new File(textPartsFolderPath)
-        );
+        createOutputFolders("/home/beinzone/testocr/kek/abay_cyr_raw.txt");
+        splitOriginalTextToParts();
+        generateWordFile();
     }
 
-    public static void splitFile() throws IOException, URISyntaxException {
-        FileSplitter.divideFileToParts(new File(origTextFilePath), new File(textPartsFolderPath), partSize);
+    public static void createOutputFolders(String origTextFilePath) throws IOException {
+        originalTextFile = new File(origTextFilePath);
+        // Create folders
+        originalTextPartsFolder =
+                originalTextFile.toPath().resolveSibling("original_text_parts").toFile();
+        printedTextPartsForRecognitionFolder =
+                originalTextFile.toPath().resolveSibling("printed_text_parts_for_recogniton").toFile();
+        imagesFolder =
+                printedTextPartsForRecognitionFolder.toPath().resolve("images").toFile();
+        pdfsFolder =
+                printedTextPartsForRecognitionFolder.toPath().resolve("pdfs").toFile();
+        recognisedTextPartsFolder =
+                originalTextFile.toPath().resolveSibling("recognised_text_parts").toFile();
+        aggregateTextFilesFolder =
+                originalTextFile.toPath().resolveSibling("aggregate_text_files").toFile();
+        wordTextFile = createBlankWordFile(aggregateTextFilesFolder);
+        FileUtils.forceMkdir(originalTextPartsFolder);
+        FileUtils.forceMkdir(printedTextPartsForRecognitionFolder);
+        FileUtils.forceMkdir(imagesFolder);
+        FileUtils.forceMkdir(pdfsFolder);
+        FileUtils.forceMkdir(recognisedTextPartsFolder);
+        FileUtils.forceMkdir(aggregateTextFilesFolder);
+    }
+
+    public static File createBlankWordFile(File aggregateTextFilesFolder) throws IOException {
+        URL inputUrl = App.class.getResource("/blank.docx");
+        File dest = aggregateTextFilesFolder.toPath().resolve("output.docx").toFile();
+        FileUtils.copyURLToFile(inputUrl, dest);
+        return dest;
+    }
+
+    public static void splitOriginalTextToParts() throws IOException, URISyntaxException {
+        System.out.println("Splitting original text file in to parts...");
+        FileSplitter.divideFileToParts(originalTextFile, originalTextPartsFolder, partSize);
+        System.out.println("Original text file splitting finished");
     }
 
     public static void generateWordFile() throws IOException {
-        WordFileHelper.fillWordFileFromTextParts(new File(wordFilePath), new File(textPartsFolderPath));
+        System.out.println("Generating word file...");
+        WordFileHelper.fillWordFileFromTextParts(wordTextFile, originalTextPartsFolder);
+        System.out.println("Word file generation completed");
     }
 }
