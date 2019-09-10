@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class App {
 
@@ -21,9 +22,31 @@ public class App {
     private static File aggregateTextFilesFolder;
 
     public static void main( String[] args ) throws IOException, URISyntaxException {
-        createOutputFolders("/home/beinzone/testocr/kek/abay_cyr_raw.txt");
+        // initialStep();
+        // ScannedLookGenerator.generateBatFileForPdfparts(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\pdfs"));
+        // cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\images"));
+    }
+
+    public static void initialStep() throws IOException, URISyntaxException {
+        String origTextFilePath = getUserInput("Enter original text file path:");
+        createOutputFolders(origTextFilePath);
         splitOriginalTextToParts();
         generateWordFile();
+    }
+
+    public static void cropPdfPartsFilesNames(File pdfsFolder) throws IOException {
+        FileHelper.cropFilesNames(pdfsFolder, "output ");
+    }
+
+    public static void cropImagePartsFilesNames(File imagesFolder) throws IOException {
+        FileHelper.cropFilesNames(imagesFolder, "Binder1_Страница_");
+        FileHelper.removeLeadingZeros(imagesFolder);
+    }
+
+    public static String getUserInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt);
+        return scanner.next();
     }
 
     public static void createOutputFolders(String origTextFilePath) throws IOException {

@@ -18,7 +18,7 @@ public class FileSplitter {
             if(builder.length() == partSize) {
                 String newFileName = currentPartFileNum + ".txt";
                 File newFile = new File(outputFolder, newFileName);
-                FileHelper.saveTextFile(newFile, builder.toString());
+                FileHelper.saveFile(newFile, builder.toString());
                 builder = new StringBuilder(partSize + 100);
                 currentPartFileNum++;
             }

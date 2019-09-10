@@ -1,15 +1,18 @@
 package com.besheater.researches;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Collection;
 
 public class FileHelper {
 
-    public static void saveTextFile(File file, String text) throws IOException {
+    public static void saveFile(File file, String text) throws IOException {
         FileOutputStream out = new FileOutputStream(file);
         out.write(text.getBytes());
         System.out.println("File " + file.getPath() + " created");
@@ -38,7 +41,40 @@ public class FileHelper {
         return name.substring(0, name.lastIndexOf("."));
     }
 
-    public static void printFilesName(File[] files) {
+    public static String getFileExtension(File file) {
+        String name = file.getName();
+        return name.substring(name.lastIndexOf(".") + 1, name.length());
+    }
+
+    public static void cropFilesNames(File folder, String wordToErase) throws IOException {
+        File[] files = folder.listFiles();
+        for (File file : files) {
+            String newName = file.getName().replaceAll(wordToErase, "");
+            if (!file.getName().equals(newName)) {
+                File destFile = file.toPath().resolveSibling(newName).toFile();
+                FileUtils.moveFile(file, destFile);
+            }
+        }
+    }
+
+    public static void removeLeadingZeros(File folder) throws IOException {
+        File[] files = folder.listFiles();
+        for (File file : files) {
+            String newName = file.getName().replaceFirst("^0+(?!$)", "");
+            if (!file.getName().equals(newName)) {
+                File destFile = file.toPath().resolveSibling(newName).toFile();
+                FileUtils.moveFile(file, destFile);
+            }
+        }
+    }
+
+    public static void printFilesNames(File[] files) {
+        for (File file : files) {
+            System.out.println(file.getName());
+        }
+    }
+
+    public static void printFilesNames(Collection<File> files) {
         for (File file : files) {
             System.out.println(file.getName());
         }
