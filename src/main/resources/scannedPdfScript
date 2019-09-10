@@ -1,0 +1,4 @@
+#
+# command from CLI using ImageMagick 6.9.7-4
+#
+convert -density 200 input.pdf -blur 0x0.8 -linear-stretch 5%x0% -rotate 0.5 +noise Gaussian -attenuate 0.5 -format pdf -quality 85 -compress JPEG -colorspace gray output.pdf

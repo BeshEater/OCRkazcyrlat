@@ -69,13 +69,4 @@ public class App {
         WordFileHelper.fillWordFileFromTextParts(wordTextFile, originalTextPartsFolder);
         System.out.println("Word file generation completed");
     }
-
-    public static void generatePdfFile() throws IOException {
-        // Not working properly some symbols missing
-        /*
-        System.out.println("Generating pdf files...");
-        PdfFileHelper.printPdfFile(wordTextFile, pdfTextFile);
-        System.out.println("PDF files generation completed");
-         */
-    }
 }
