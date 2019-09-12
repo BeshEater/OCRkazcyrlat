@@ -25,6 +25,7 @@ public class App {
         // initialStep();
         // ScannedLookGenerator.generateBatFileForPdfparts(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\pdfs"));
         // cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\images"));
+        Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Desktop/test/"), "Latin");
     }
 
     public static void initialStep() throws IOException, URISyntaxException {

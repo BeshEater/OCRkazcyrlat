@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class ScannedLookGenerator {
 
-    public static void generateBatFileForPdfparts(File pdfPartsFolder) throws IOException {
+    public static void makeBatFileForScannedPdfsGeneration(File pdfPartsFolder) throws IOException {
         List<File> files = getPdfFiles(pdfPartsFolder.listFiles());
         Collections.sort(files, FileHelper::numericFileNamesCompareAsc);
         FileUtils.forceMkdir(pdfPartsFolder.toPath().resolve("scanned").toFile());
