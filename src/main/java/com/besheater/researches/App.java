@@ -1,5 +1,6 @@
 package com.besheater.researches;
 
+import com.besheater.researches.examples.QuickStartGoogleOCR;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -21,11 +22,12 @@ public class App {
     private static File recognisedTextPartsFolder;
     private static File aggregateTextFilesFolder;
 
-    public static void main( String[] args ) throws IOException, URISyntaxException {
+    public static void main( String[] args ) throws Exception {
         // initialStep();
         // ScannedLookGenerator.generateBatFileForPdfparts(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\pdfs"));
         // cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\images"));
-        Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Desktop/test/"), "Latin");
+         Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Desktop/test/"), "kaz");
+        // Recogniser.makeGoogleRecognisedParts(new File("/home/beinzone/Desktop/test/"));
     }
 
     public static void initialStep() throws IOException, URISyntaxException {
