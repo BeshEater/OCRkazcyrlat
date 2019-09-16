@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class App {
 
-    private static int partSize = 3400; // characters
+    private static int partSize = 3360; // characters
     private static File originalTextFile;
     private static File wordTextFile;
     private static File pdfTextFile;
@@ -24,9 +24,10 @@ public class App {
 
     public static void main( String[] args ) throws Exception {
         // initialStep();
-        // ScannedLookGenerator.generateBatFileForPdfparts(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\pdfs"));
-        // cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\test\\printed_text_parts_for_recogniton\\images"));
-         Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Desktop/test/"), "kaz");
+        // cropPdfPartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\pdfs"));
+        // ScannedLookGenerator.makeBatFileForScannedPdfsGeneration(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\pdfs"));
+        cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\images"));
+        // Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Desktop/test/"), "kaz");
         // Recogniser.makeGoogleRecognisedParts(new File("/home/beinzone/Desktop/test/"));
     }
 
