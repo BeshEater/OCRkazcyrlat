@@ -69,4 +69,33 @@ public class RecognitionAccuracyCalculator {
 
         return refinedText;
     }
+
+    public static void makeAccuracyReportScript(File reportsFolder, int textPartsNum) throws IOException {
+        String[] engines = {"abby", "google", "tesseract"};
+        String template = "accuracy %1$s %2$s %3$s\n";
+        StringBuilder script = new StringBuilder();
+        script.append("#!/bin/bash\n");
+        for (String engine: engines) {
+            for (int i = 1; i <= textPartsNum; i++) {
+                String fileName = i + ".txt";
+                String correctFile = "../original_text_parts/" + fileName;
+                String recognFile = "../recognised_text_parts/" + engine + "/refined/" + fileName;
+                String reportFile = engine + "/" + fileName;
+                script.append(String.format(template, correctFile, recognFile, reportFile));
+            }
+            script.append(getAccSummCommand(engine, textPartsNum));
+        }
+        File scriptFile = reportsFolder.toPath().resolve("makeReports.sh").toFile();
+        FileHelper.saveFile(scriptFile, script.toString());
+    }
+
+    private static String getAccSummCommand(String engine, int textPartsNum) {
+        StringBuilder summReport = new StringBuilder();
+        summReport.append("accsum ");
+        for (int i = 1; i <= textPartsNum; i++) {
+            summReport.append(engine + "/" +i + ".txt ");
+        }
+        summReport.append("> " + engine +"/summary.txt\n");
+        return summReport.toString();
+    }
 }

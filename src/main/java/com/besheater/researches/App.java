@@ -29,7 +29,8 @@ public class App {
         // cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\images"));
         // Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Desktop/test/"), "kaz");
         // Recogniser.makeGoogleRecognisedParts(new File("/home/beinzone/Desktop/test/"));
-        RecognitionAccuracyCalculator.refineRecognisedTextParts(new File("C:\\Users\\Mustang\\Desktop\\OCR_cyr_lat_research\\latin\\The_Abay_way\\recognised_text_parts\\tesseract"));
+        // RecognitionAccuracyCalculator.refineRecognisedTextParts(new File("C:\\Users\\Mustang\\Desktop\\OCR_cyr_lat_research\\latin\\The_Abay_way\\recognised_text_parts\\tesseract"));
+        RecognitionAccuracyCalculator.makeAccuracyReportScript(new File("/home/beinzone/Projects/OCR_cyr_lat_research/cyrillic/Civil_Code_RK_special_part/reports/"), 100);
     }
 
     public static void initialStep() throws IOException, URISyntaxException {
