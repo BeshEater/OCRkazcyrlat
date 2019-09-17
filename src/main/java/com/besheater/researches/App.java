@@ -26,9 +26,10 @@ public class App {
         // initialStep();
         // cropPdfPartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\pdfs"));
         // ScannedLookGenerator.makeBatFileForScannedPdfsGeneration(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\pdfs"));
-        cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\images"));
+        // cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\images"));
         // Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Desktop/test/"), "kaz");
         // Recogniser.makeGoogleRecognisedParts(new File("/home/beinzone/Desktop/test/"));
+        RecognitionAccuracyCalculator.refineRecognisedTextParts(new File("C:\\Users\\Mustang\\Desktop\\OCR_cyr_lat_research\\latin\\The_Abay_way\\recognised_text_parts\\tesseract"));
     }
 
     public static void initialStep() throws IOException, URISyntaxException {
