@@ -10,8 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class WordFileHelper {
 
     private static String outputWordFileName = "output.docx";
-    private static double boldTextAmount = 0.1;
-    private static double italicTextAmount = 0.1;
+    private static double boldTextAmount = 0.15;
+    private static double italicTextAmount = 0.15;
 
     public static void fillWordFileFromTextParts(File outputWordFile, File textPartsFolder) throws IOException {
         File[] textPartFiles = textPartsFolder.listFiles();

@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class App {
 
-    private static int partSize = 3360; // characters
+    private static int partSize = 2900; // characters
     private static File originalTextFile;
     private static File wordTextFile;
     private static File pdfTextFile;
@@ -24,13 +24,12 @@ public class App {
     private static File aggregateTextFilesFolder;
 
     public static void main( String[] args ) throws Exception {
-        UppercaseMaker.makeSomeWordsUppercase(new File("/home/beinzone/Projects/kazakh_texts_cyr_lat_OCR_test_data/cyrillic/Civil_Code_RK_special_part/cyrillic_alphabet.txt"),
-                Locale.ROOT, 1.0);
+        // UppercaseMaker.makeSomeWordsUppercase(new File("/home/text.txt"), Locale.ROOT, 0.5);
         // initialStep();
         // cropPdfPartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\pdfs"));
         // ScannedLookGenerator.makeBatFileForScannedPdfsGeneration(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\pdfs"));
         // cropImagePartsFilesNames(new File("C:\\Users\\Mustang\\Desktop\\temo\\latin\\The_Abay_way\\printed_text_parts_for_recogniton\\images"));
-        Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Projects/OCR_cyr_lat_research/cyrillic/Civil_Code_RK_special_part/printed_text_parts_for_recogniton/images/"), "kaz");
+        // Recogniser.makeTesseractBashScriptForRecogn(new File("/home/beinzone/Projects/OCR_cyr_lat_research/cyrillic/Civil_Code_RK_special_part/printed_text_parts_for_recogniton/images/"), "kaz");
         // Recogniser.makeGoogleRecognisedParts(new File("/home/beinzone/Desktop/test/"));
         // RecognitionAccuracyCalculator.refineRecognisedTextParts(new File("C:\\Users\\Mustang\\Desktop\\OCR_cyr_lat_research\\latin\\The_Abay_way\\recognised_text_parts\\tesseract"));
         // RecognitionAccuracyCalculator.makeAccuracyReportScript(new File("/home/beinzone/Projects/OCR_cyr_lat_research/cyrillic/Civil_Code_RK_special_part/reports/"), 100);
