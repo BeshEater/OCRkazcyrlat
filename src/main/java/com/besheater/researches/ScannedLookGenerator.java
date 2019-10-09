@@ -15,7 +15,7 @@ public class ScannedLookGenerator {
         List<File> files = getPdfFiles(pdfPartsFolder.listFiles());
         Collections.sort(files, FileHelper::numericFileNamesCompareAsc);
         FileUtils.forceMkdir(pdfPartsFolder.toPath().resolve("scanned").toFile());
-        String command = "convert -density 200 %1$s -blur 0x0.8 -linear-stretch 5%%%%x0%%%%" +
+        String command = "convert -density 200 %1$s -blur 0x0.8 -wave 2x256 -linear-stretch 5%%%%x0%%%%" +
                 " -rotate 0.5 +noise Gaussian -attenuate 0.5 -format pdf -quality 85" +
                 " -compress JPEG -colorspace gray scanned\\%1$s\n";
         StringBuilder batFileText = new StringBuilder();
